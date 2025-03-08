@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudiantes Registrados</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Estudiantes Registrados</h1>
+    <ul id="lista-estudiantes" class="list-group"></ul>
+    <a href="index.html" class="btn btn-primary mt-4">Volver</a>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const estudiantes = JSON.parse(localStorage.getItem('estudiantes')) || [];
+        const listaEstudiantes = document.getElementById("lista-estudiantes");
+
+        estudiantes.forEach(estudiante => {
+            const li = document.createElement("li");
+            li.className = "list-group-item";
+            li.textContent = `${estudiante.nombre} - Código: ${estudiante.codigo} - Carrera: ${estudiante.carrera} - Semillero: ${estudiante.semillero}`;
+            listaEstudiantes.appendChild(li);
+        });
+    });
+</script>
+</body>
+</html>
